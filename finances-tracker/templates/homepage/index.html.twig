@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Finances Tracker{% endblock %}
 
 {% block body %}
 <style>
@@ -8,6 +8,10 @@
 </style>
 
 <div class="wrapper">
-    <h1>Hello {{ app.user.forename }}! ✅</h1>
+    {% if userLoggedIn %}
+        <h1>Hello {{ app.user.forename }}! ✅</h1>
+    {% else %}
+        <h1>Hi there! You must <a href="{{ path('app_login') }}">sign in</a> to use this app.</h1>
+    {% endif %}
 </div>
 {% endblock %}
