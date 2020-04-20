@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -51,10 +52,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             'username' => $request->request->get('username'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
+            'test_mode' => $request->request->get('test_mode'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
             $credentials['username']
+        );
+        $request->getSession()->set(
+            'test_mode',
+            $credentials['test_mode']
         );
 
         return $credentials;
