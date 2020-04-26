@@ -43,6 +43,11 @@ class User implements UserInterface
      */
     private $surname;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $card_scrambler;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class User implements UserInterface
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getCardScrambler(): ?string
+    {
+        return $this->card_scrambler;
+    }
+
+    public function setCardScrambler(string $card_scrambler): self
+    {
+        $this->card_scrambler = $card_scrambler;
 
         return $this;
     }

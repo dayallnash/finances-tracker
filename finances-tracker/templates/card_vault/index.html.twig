@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card Vault - Finances Tracker{% endblock %}
+
+{% block body %}
+<style>
+    .wrapper {
+        margin: 1em auto;
+        max-width: 1200px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="row mb-2 ml-4 mr-4">
+        <div class="col">
+            <a class="float-left" href="{{ path('card_vault_add') }}">Add new card</a>
+        </div>
+        <div class="col">
+            {% if showDetails == false %}
+                <a class="float-right" href="{{ path('card_vault_show_details') }}">Show details</a>
+            {% else %}
+                <a class="float-right" href="{{ path('card_vault') }}">Hide details</a>
+            {% endif %}
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" style="text-align: center">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Card name</th>
+                <th>Description</th>
+                <th>Cardholder</th>
+                <th>Long number</th>
+                <th>Expiry date</th>
+                <th>CVV</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if showDetails == true %}
+                {% for card in allCards %}
+                    <tr>
+                        <td>{{ card.cardtype }}</td>
+                        <td>{{ card.name }}</td>
+                        <td>{{ card.description }}</td>
+                        <td>{{ card.cardholdername }}</td>
+                        <td>{{ card.getLongNumberFormatted }}</td>
+                        <td>{{ card.expirydate }}</td>
+                        <td>{{ card.cvv }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for card in allCards %}
+                    <tr>
+                        <td>{{ card.cardtype }}</td>
+                        <td>{{ card.name }}</td>
+                        <td>{{ card.description }}</td>
+                        <td>{{ card.cardholdername }}</td>
+                        <td>{{ card.longnumberstart }} XXXX XXXX {{ card.longnumberend }}</td>
+                        <td>XX/XX</td>
+                        <td>XXX</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -10,6 +10,11 @@
 <div class="wrapper">
     {% if userLoggedIn %}
         <h1>Hello {{ app.user.forename }}! ✅</h1>
+
+        <h2>Actions:</h2>
+        <ul>
+            <li><a href="{{ path('card_vault') }}">Card Vault</a></li>
+        </ul>
     {% else %}
         <h1>Hi there! You must <a href="{{ path('app_login') }}">sign in</a> to use this app.</h1>
     {% endif %}

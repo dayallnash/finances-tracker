@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card Vault - Finances Tracker{% endblock %}
+
+{% block body %}
+    <style>
+        .wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    </style>
+
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-3">
+                <a href="{{ path('card_vault') }}">Cancel</a>
+            </div>
+            <div class="col">
+                <form method="post">
+                    <div class="form-group row">
+                        <div class="col-3 my-auto">
+                            <label for="name">Card name</label>
+                        </div>
+                        <div class="col-9 my-auto">
+                            <input name="name" type="text" id="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-3 my-auto">
+                            <label for="description">Card description</label>
+                        </div>
+                        <div class="col-9 my-auto">
+                            <input name="description" type="text" id="description">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-3 my-auto">
+                            <label for="long_number">Long number</label>
+                        </div>
+                        <div class="col-9 my-auto">
+                            <input name="long_number" type="text" id="long_number">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-3 my-auto">
+                            <label for="cardholder_name">Cardholder name</label>
+                        </div>
+                        <div class="col-9 my-auto">
+                            <input name="cardholder_name" type="text" id="cardholder_name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-3 my-auto">
+                            <label for="expiry_date">Expiry date</label>
+                        </div>
+                        <div class="col-9 my-auto">
+                            <input name="expiry_date" type="text" id="expiry_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-3 my-auto">
+                            <label for="cvv">CVV</label>
+                        </div>
+                        <div class="col-9 my-auto">
+                            <input name="cvv" type="text" id="cvv">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="card_type" value="test">
+
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
